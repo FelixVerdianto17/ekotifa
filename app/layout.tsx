@@ -17,16 +17,38 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://ekotifa.com'),
-  title: "Ekotifa - PT Ekowisata Kreatif Indonesia",
-  description: "Menghubungkan petualangan alam luar biasa dengan konservasi lingkungan dan pemberdayaan komunitas lokal.",
-  keywords: ["Ekowisata", "Konservasi", "Wisata Berkelanjutan", "Indonesia", "Ekotifa"],
+  metadataBase: new URL('https://ekotifa.id'),
+  title: {
+    default: "Ekotifa | Ekowisata Kreatif Indonesia",
+    template: "%s | Ekotifa",
+  },
+  description: "Ekotifa transforms recreation into meaningful journeys through sustainable tourism, field education, conservation, and community empowerment.",
+  keywords: [
+    "Ekotifa",
+    "Ekowisata Kreatif Indonesia",
+    "ecotourism Indonesia",
+    "sustainable tourism",
+    "educational travel",
+    "community empowerment",
+    "field learning",
+    "wisata edukasi",
+    "ekowisata"
+  ],
   authors: [{ name: "Ekotifa" }],
   openGraph: {
-    title: "Ekotifa - Pariwisata Berkelanjutan",
-    description: "Menghubungkan petualangan alam luar biasa dengan konservasi lingkungan dan pemberdayaan komunitas lokal.",
+    title: "Ekotifa | Ekowisata Kreatif Indonesia",
+    description: "Meaningful journeys that drive sustainable action.",
+    url: "https://ekotifa.id",
+    siteName: "Ekotifa",
     type: "website",
     locale: "id_ID",
+    images: [{ url: "/images/og/ekotifa-og.jpg" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ekotifa | Ekowisata Kreatif Indonesia",
+    description: "Meaningful journeys that drive sustainable action.",
+    images: ["/images/og/ekotifa-og.jpg"],
   },
   icons: {
     icon: '/images/brand/logo.webp',

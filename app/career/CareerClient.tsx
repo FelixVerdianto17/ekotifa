@@ -79,7 +79,7 @@ export default function CareerClient({ initialJobOpenings = [] }: { initialJobOp
               <>
                 <img 
                   src="https://img.youtube.com/vi/v4Q_7zIIBUw/maxresdefault.jpg" 
-                  alt="Video Thumbnail" 
+                  alt="Video Ekotifa pariwisata berkelanjutan" 
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
