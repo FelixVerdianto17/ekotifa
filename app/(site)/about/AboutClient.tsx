@@ -115,7 +115,7 @@ export default function AboutClient() {
               PT Ekowisata Kreatif Indonesia
             </h1>
             <p className="text-xl leading-relaxed text-zinc-500 mb-6">
-              Perjalanan kami dimulai dari inisiatif **EFTO (Ecotourism for Tomorrow)** pada tahun 2008. Didorong oleh komitmen kuat untuk mengintegrasikan pariwisata berkelanjutan dengan edukasi berkualitas, inisiatif ini bertransformasi menjadi **PT Ekowisata Kreatif Indonesia (Ekotifa)** pada Januari 2018.
+              Perjalanan kami dimulai dari inisiatif <span className="font-semibold text-zinc-900">EFTO (Ecotourism for Tomorrow)</span> pada tahun 2008. Didorong oleh komitmen kuat untuk mengintegrasikan pariwisata berkelanjutan dengan edukasi berkualitas, inisiatif ini bertransformasi menjadi <span className="font-semibold text-zinc-900">PT Ekowisata Kreatif Indonesia (Ekotifa)</span> pada Januari 2018.
             </p>
             <p className="text-lg leading-relaxed text-zinc-500">
               Sebagai konsultan pariwisata berkelanjutan dan operator ekowisata tepercaya di Indonesia, kami mendesain platform perjalanan yang mentransformasi rekreasi menjadi pengalaman belajar dan aksi nyata yang berdampak jangka panjang bagi kelestarian bumi.
@@ -152,12 +152,12 @@ export default function AboutClient() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="h-[500px] w-full overflow-hidden rounded-[2rem] bg-zinc-100 mt-20"
+          className="h-[500px] sm:h-[600px] w-full overflow-hidden rounded-2xl bg-zinc-50 mt-20"
         > 
           <img 
             src="/images/sections/About.webp" 
             alt="Kegiatan Konservasi Ekotifa" 
-            className="h-full w-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+            className="h-full w-full object-contain p-4 md:p-8 rounded-2xl grayscale hover:grayscale-0 transition-all duration-700"
           />
         </motion.div>
       </section>
@@ -302,13 +302,21 @@ export default function AboutClient() {
             </p>
           </div>
 
-          <div className="space-y-20">
+          <div className="flex flex-col items-center">
             {teamCategories.map((category, catIdx) => (
-              <div key={catIdx} className="border-t border-zinc-100 pt-12 first:border-0 first:pt-0">
-                <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-8">{category.title}</h3>
+              <div key={catIdx} className="flex flex-col items-center w-full">
                 
-                {/* Responsive grid based on member count in category */}
-                <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                {/* Vertical Line dari section sebelumnya */}
+                {catIdx > 0 && (
+                  <div className="w-px h-16 md:h-24 bg-zinc-200 my-4" />
+                )}
+
+                <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#F4CA44] mb-8 text-center bg-zinc-700 border border-zinc-700 px-6 py-3 rounded-full">
+                  {category.title}
+                </h3>
+                
+                {/* Responsive flex layout based on member count in category */}
+                <div className="flex flex-wrap justify-center gap-6 md:gap-8 w-full">
                   {category.members.map((member, idx) => (
                     <motion.div 
                       key={idx}
@@ -316,28 +324,10 @@ export default function AboutClient() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.05 }}
-                      className="group flex flex-col gap-4"
+                      className="group flex flex-col items-center justify-center text-center p-8 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-zinc-200 hover:shadow-sm transition-all w-full sm:w-[calc(50%-1.5rem)] md:w-[calc(33.33%-2rem)] lg:w-[280px]"
                     >
-                      {/* Image Box */}
-                      <div className="aspect-[3/4] w-full overflow-hidden bg-zinc-100 rounded-2xl border border-zinc-100 relative">
-                        {/* Fallback pattern for profile photo using initials if photo not loaded */}
-                        <div className="absolute inset-0 flex items-center justify-center bg-zinc-50 text-zinc-300 font-medium text-4xl select-none group-hover:scale-105 transition-all duration-500">
-                          {member.name.split(',')[0].split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()}
-                        </div>
-                        <img 
-                          src={member.imageUrl} 
-                          alt={member.name} 
-                          className="absolute inset-0 h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
-                          onError={(e) => {
-                            (e.target as HTMLElement).style.opacity = '0';
-                          }}
-                        />
-                      </div>
-                      {/* Member info */}
-                      <div className="flex flex-col">
-                        <h4 className="text-lg font-bold text-zinc-900 leading-snug">{member.name}</h4>
-                        <span className="text-sm text-zinc-400 mt-1">{member.role}</span>
-                      </div>
+                      <h4 className="text-xl font-bold text-zinc-900 leading-snug mb-2">{member.name}</h4>
+                      <span className="text-sm font-medium text-[#F4CA44]">{member.role}</span>
                     </motion.div>
                   ))}
                 </div>

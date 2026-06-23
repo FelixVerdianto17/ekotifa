@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ChevronRight, Compass, MapPin } from "lucide-react";
 import { getProgramBySlug, getAllProgramSlugs } from "@/data/programs";
+import { ContactButton } from "@/components/ui/ContactButton";
 
 // Static Site Generation (SSG)
 export function generateStaticParams() {
@@ -25,14 +26,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Program Not Found | Ekotifa" };
   }
   
-  const description = program.shortDescription || program.tagline || program.description.substring(0, 150);
+  const title = program.seoMetadata?.title || `${program.title} | Ekotifa Programs & Services`;
+  const description = program.seoMetadata?.description || program.shortDescription || program.tagline || program.description.substring(0, 150);
   
   return {
-    title: `${program.title} | Ekotifa Programs & Services`,
+    title: title,
     description: description,
     keywords: [program.title, program.category, "Ekowisata", "Program Edukasi", "Ekotifa", "Sustainable Tourism"],
     openGraph: {
-      title: `${program.title} | Ekotifa Programs & Services`,
+      title: title,
       description: description,
       type: "website",
       images: program.imageUrl ? [{ url: program.imageUrl, alt: program.title }] : undefined,
@@ -193,13 +195,12 @@ export default async function ProgramDetailPage({ params }: Props) {
                 </div>
               )}
 
-              <Link 
-                href={program.ctaHref || "#"} 
+              <ContactButton 
                 className="flex w-full items-center justify-center gap-2 rounded-full bg-yellow-600 px-6 py-4.5 text-xs font-bold uppercase tracking-widest text-zinc-950 transition-all hover:bg-yellow-500 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(202,138,4,0.2)] hover:shadow-[0_0_30px_rgba(202,138,4,0.4)]"
               >
                 {program.ctaLabel || "Book Experience"}
                 <ArrowRight size={16} />
-              </Link>
+              </ContactButton>
 
             </div>
           </div>

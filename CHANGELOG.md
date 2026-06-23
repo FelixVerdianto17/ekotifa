@@ -5,9 +5,54 @@ Semua perubahan penting pada proyek **Ekotifa-next** akan dicatat dalam dokumen 
 ---
 
 ## [Unreleased]
+### Changed
+* **Hero Section UI:**
+  * Menyesuaikan durasi *auto slide* pada komponen Hero menjadi 4 detik dan menghilangkan jeda saat disentuh (*pause on hover*) untuk memastikan *looping* gambar berjalan lancar secara terus-menerus.
+* **Global CTA Contact Behavior:**
+  * Mengubah seluruh tautan Call-To-Action (CTA) yang bertujuan untuk menghubungi Ekotifa (seperti di halaman Detail Program dan Footer) menjadi satu *source of truth* terpusat, yaitu memunculkan `ContactModal` (berisi rute kontak Email dan Instagram).
+  * Membuat helper komponen klien re-usable `ContactButton.tsx` untuk memicu *event* `openContactModal`.
+  * Meniadakan seluruh integrasi kontak WhatsApp dari komponen antarmuka, menghindari dependensi link `wa.me` secara tersebar.
+
 *Rencana perubahan berikutnya:*
 * Push ke GitHub repository.
 * Deployment testing ke platform hosting (Vercel/Netlify).
+
+## [1.9.9] - 2026-06-21
+### Added
+* **Program Baru: OFFLINE DAY:**
+  * Menambahkan program *one day healing escape* OFFLINE DAY ke dalam kategori "Meaningful Journeys".
+  * Memperbarui antarmuka `Program` secara dinamis (`any` untuk struktur *itinerary* dan aktivitas) agar kompatibel dengan ragam format deskripsi seperti waktu, kapasitas, biaya, _include_, _exclude_, _participant journey_, _unique selling points_, serta _sustainability impact_ tanpa memecah rute dinamis (SSG) maupun metadata SEO.
+
+
+## [1.9.8] - 2026-06-21
+### Added
+* **Program Baru: TEROKA:**
+  * Menambahkan program living expedition TEROKA ke dalam kategori "Meaningful Journeys".
+  * Memperbarui antarmuka data `Program` di `data/programs.ts` untuk mendukung *field* opsional baru (`itinerarySummary`, `safetyAndOperation`, `teamSupport`, `outputs`, `rules`, `seoMetadata`).
+  * Mengintegrasikan `seoMetadata` pada komponen halaman detail program agar mampu menangani tag `title` dan `description` khusus secara dinamis.
+
+
+## [1.9.7] - 2026-06-19
+### Changed
+* **Hero Section UI:**
+  * Mengubah Hero section menjadi carousel gambar dengan fitur *auto slide* (5 detik) dan *pause on hover*.
+  * Menambahkan kontrol panah *Previous/Next* berdesain *clean* dengan transisi animasi halus menggunakan `framer-motion`.
+* **About Page UI:**
+  * Memperbarui tata letak gambar utama About Us agar menggunakan `object-contain` dengan latar belakang cerah (*soft gray/zinc-50*), memastikan gambar tidak terpotong (cropped) namun tetap mempertahankan aspek rasio aslinya secara penuh.
+  * Mengubah kartu profil Tim & Pendiri menjadi desain *text-only* yang lebih rapi (tanpa foto/avatar) dengan tata letak konten rata tengah (*justify center*), menyederhanakan antarmuka.
+
+## [1.9.6] - 2026-06-18
+### Added
+* **Sanity Integration for Careers:**
+  * Membuat file client Sanity di `sanity/lib/client.ts` untuk menghubungkan frontend ke Sanity CMS menggunakan `next-sanity`.
+  * Membuat file queries Sanity di `sanity/lib/queries.ts` dengan function `getCareerPosts()` untuk mengambil data career post dari Sanity CMS.
+
+### Changed
+* **Career Page Integration:**
+  * Mengubah `app/(site)/career/page.tsx` untuk mengambil data lowongan pekerjaan langsung dari Sanity CMS melalui `getCareerPosts()`, tidak lagi menggunakan Supabase.
+  * Memperbarui tipe data `JobOpening` di `CareerClient.tsx` agar selaras dengan skema data Sanity `careerPost`.
+  * Memperbarui visual rendering di `CareerClient.tsx` untuk menampilkan badge `job.type` (menggantikan `job.department` yang tidak ada di skema Sanity).
+  * Menambahkan penanganan state lowongan pekerjaan yang tidak memiliki `googleFormUrl` agar tombol apply/kursor-nya *disabled*, namun kartunya tetap tampil (tidak di-filter keluar).
 
 ## [1.9.5] - 2026-06-16
 ### Added
@@ -166,7 +211,7 @@ Semua perubahan penting pada proyek **Ekotifa-next** akan dicatat dalam dokumen 
   * Menata ulang *Card UI* pada laman utama `/stories-impact` agar lebih ringkas (menghilangkan grid *Participant/Community impact* dari kartu *list*, fokus pada deskripsi pendek dan tujuan utama).
   * Menambahkan penampang visual khusus (berbintang estetik) untuk menampilkan **Objective** pada level halaman detail, sekaligus mengatur ulang proporsi penyebutan tautan sumber agar tidak menjadi *highlight* utama.
 * **Integrasi Aset & Komponen Visual:**
-  * Membangun daftar relasi data dinamis di `data/partnerLogos.ts` yang mendokumentasikan 39 logo kolaborasi dan 18 logo klien dalam format WebP resolusi tinggi.
+  * Membangun daftar relasi data dinamis di `data/partnerLogos.ts` yang mendokumentasikan 41 logo kolaborasi dan 18 logo klien dalam format WebP resolusi tinggi.
   * Mendesain ulang `PartnerSection` menjadi dua lajur animasi pita *(Infinite Marquee)* terpisah: lajur atas untuk jejaring Kolaborasi (bergerak ke kiri) dan lajur bawah untuk instansi Klien (bergerak ke kanan).
   * Efek visual pada *marquee* meliputi transisi *grayscale-to-color* saat disentuh *(hover)* serta responsivitas adaptif dari level layar ponsel hingga *desktop* ekstra lebar.
 

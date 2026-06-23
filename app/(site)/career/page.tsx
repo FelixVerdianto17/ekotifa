@@ -1,5 +1,5 @@
 import CareerClient from './CareerClient';
-import { getCareerPosts } from '@/lib/supabase/queries';
+import { getCareerPosts } from '@/sanity/lib/queries';
 
 export const metadata = {
   title: "Join Our Team | Ekotifa",

@@ -1,8 +1,6 @@
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import ContactModal from "@/components/ContactModal";
+
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -65,14 +63,7 @@ export default function RootLayout({
   return (
     <html lang="id" className={`${outfit.variable} ${plusJakartaSans.variable} scroll-smooth`}>
       <body className="min-h-screen flex flex-col relative bg-white text-zinc-950 overflow-x-hidden antialiased">
-        <Navbar />
-        
-        <main className="flex-grow">
-          {children}
-        </main>
-
-        <Footer />
-        <ContactModal />
+        {children}
       </body>
     </html>
   );

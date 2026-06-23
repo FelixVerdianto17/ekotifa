@@ -234,6 +234,18 @@ export const collaborationLogos = [
     "name": "Txt Dari Bogor",
     "logoUrl": "/images/partners/kolaborasi/txt-dari-bogor.webp",
     "alt": "Txt Dari Bogor Logo"
+  },
+  {
+    "id": "collab-40",
+    "name": "Primata Indonesia",
+    "logoUrl": "/images/partners/kolaborasi/primata-indonesia.webp",
+    "alt": "Primata Indonesia Logo"
+  },
+  {
+    "id": "collab-41",
+    "name": "Regen",
+    "logoUrl": "/images/partners/kolaborasi/regen.webp",
+    "alt": "Regen Logo"
   }
 ];
 

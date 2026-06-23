@@ -12,6 +12,25 @@ export interface Program {
   benefits: string[];
   suitableDestinations?: string[];
   suitableActivities?: string[];
+  itinerarySummary?: any;
+  location?: string;
+  duration?: string;
+  capacity?: string;
+  price?: string;
+  mainActivities?: any;
+  participantJourney?: string[];
+  include?: string[];
+  exclude?: string[];
+  uniqueSellingPoints?: string[];
+  sustainabilityImpact?: string[];
+  safetyAndOperation?: string[];
+  teamSupport?: string[];
+  outputs?: string[];
+  rules?: string[];
+  seoMetadata?: {
+    title: string;
+    description: string;
+  };
   imageUrl: string;
   ctaLabel: string;
   ctaHref: string;
@@ -258,6 +277,247 @@ export const programCategories: Category[] = [
         suitableActivities: ["Cultural Exchange", "Traditional Farming", "Storytelling"],
         imageUrl: "/images/programs/trip-in-tribe.webp",
         ctaLabel: "Hubungi Kami",
+        ctaHref: "https://wa.me/628123456789",
+        isFeatured: false,
+        isActive: true
+      },
+      {
+        id: "teroka",
+        title: "TEROKA",
+        slug: "teroka",
+        category: "Meaningful Journeys",
+        subtitle: "Share, Care and Respect",
+        tagline: "A living expedition to reconnect with nature, self, and collective responsibility.",
+        shortDescription: "TEROKA is a living expedition program that transforms mountain trekking into a reflective journey of self-awareness, discipline, teamwork, and deeper connection with nature.",
+        description: "TEROKA adalah program living expedition yang menjadikan gunung bukan hanya sebagai destinasi, tetapi sebagai ruang belajar dan medium untuk mengembangkan kesadaran diri, ritme, kedisiplinan, dan kehadiran diri. Melalui pengalaman tinggal di alam bebas, peserta terlibat aktif dalam manajemen harian ekspedisi, refleksi, mindfulness, nature journaling, serta kolaborasi bersama tim pendukung.",
+        highlights: [
+          "Living Expedition Experience",
+          "Mountain Trekking & Outdoor Immersion",
+          "Mindfulness and Nature Journaling",
+          "Team Collaboration & Expedition Management",
+          "Self-Awareness and Discipline Practice",
+          "Leave No Trace and Environmental Responsibility",
+          "Reflective Journey and Gratitude Session"
+        ],
+        outcomes: [
+          "Personal expedition logbook",
+          "Nature journaling records",
+          "Self-awareness reflection",
+          "Expedition documentation",
+          "Personal achievement certificate",
+          "Zero waste awareness report",
+          "Stronger relationship with nature and self"
+        ],
+        benefits: [
+          "Membantu peserta membangun disiplin, ketahanan diri, dan kesadaran personal",
+          "Memberikan pengalaman pendakian yang lebih reflektif dan bermakna",
+          "Mengembangkan kemampuan adaptasi, kolaborasi, dan tanggung jawab di alam bebas",
+          "Menumbuhkan hubungan baru dengan alam melalui mindfulness dan journaling",
+          "Mendorong perilaku bertanggung jawab melalui prinsip leave no trace"
+        ],
+        suitableDestinations: [
+          "Gunung Salak",
+          "Gunung Gede Pangrango",
+          "Gunung Ciremai",
+          "Gunung Prau",
+          "Gunung Merbabu",
+          "Gunung Lawu",
+          "Gunung Arjuno",
+          "Gunung Argopuro"
+        ],
+        suitableActivities: [
+          "Mindful Walking",
+          "Nature Journaling",
+          "Mountain Trekking",
+          "Expedition Management"
+        ],
+        itinerarySummary: [
+          { day: "Day 1", title: "The Transition", route: "Baderan to Sabana Kecil", activity: "Sensory Gate & Unplugging Ritual", journaling: "The Leaving" },
+          { day: "Day 2", title: "The Observation & Connection", route: "Sabana Kecil to Cikasur", activity: "Wildlife Silent Watching & Deep Listening", journaling: "The Witness" },
+          { day: "Day 3", title: "The Immersion & Solitude", route: "Cikasur to Sabana Lonceng", activity: "Mindful Walking & The Power of Solitude", journaling: "The Dialogue" },
+          { day: "Day 4", title: "The Perspective & Gratitude", route: "Puncak Rengganis, Puncak Argopuro, Hutan Lumut, Danau Taman Hidup", activity: "Historical Reflection & Forest Bathing", journaling: "The Summit of Mind" },
+          { day: "Day 5", title: "Integration & Anchoring", route: "Danau Taman Hidup to Basecamp Bremi", activity: "Morning Stillness & Future Mapping", journaling: "The Echo" }
+        ],
+        safetyAndOperation: [
+          "Pre-departure health screening",
+          "Regular physical condition monitoring",
+          "Technical briefing before trekking",
+          "Evacuation route planning",
+          "Emergency pickup points",
+          "First aid ready team",
+          "Communication system with HT or emergency signal",
+          "Bad weather protocol"
+        ],
+        teamSupport: [
+          "Expedition Leader",
+          "Expedition Facilitator",
+          "Logistic Manager",
+          "Medical Support",
+          "Documentation Team",
+          "Local Driver / Shuttle",
+          "Local Transport Support",
+          "SIMAKSI / permit coordination"
+        ],
+        outputs: [
+          "Cinematic journey video",
+          "High-quality photo bank",
+          "Social media kit",
+          "Expedition report",
+          "Personal achievement certificate",
+          "Logbook pendakian",
+          "Zero waste report",
+          "Local economic contribution report",
+          "Educational transformation through post-trip reflection"
+        ],
+        rules: [
+          "Respect the silence",
+          "Carry your responsibility",
+          "Leave no trace",
+          "Stay present",
+          "Walk together",
+          "Listen before speaking"
+        ],
+        seoMetadata: {
+          title: "TEROKA | Living Expedition Program | Ekotifa",
+          description: "TEROKA is a living expedition program by Ekotifa that combines mountain trekking, mindfulness, nature journaling, teamwork, and environmental responsibility."
+        },
+        imageUrl: "/images/programs/teroka.webp",
+        ctaLabel: "View Program Details",
+        ctaHref: "https://wa.me/628123456789",
+        isFeatured: false,
+        isActive: true
+      },
+      {
+        id: "offline-day",
+        title: "OFFLINE DAY",
+        slug: "offline-day",
+        category: "Meaningful Journeys",
+        subtitle: "Disconnect to Reconnect",
+        tagline: "A one-day healing escape to pause from digital noise and reconnect with nature, people, and self.",
+        shortDescription: "OFFLINE DAY is a one-day digital detox and mindful nature experience designed to help participants slow down, disconnect from screens, and reconnect with themselves, others, and the natural environment.",
+        description: "OFFLINE DAY bukan sekadar kegiatan rekreasi, tetapi perjalanan singkat untuk berhenti dari ritme hidup yang serba cepat. Melalui pengalaman sehari penuh, peserta diajak meninggalkan notifikasi, timeline media sosial, dan distraksi digital sementara. Peserta akan menyimpan gadget ke dalam Digital Rest Box sebagai simbol memberi waktu istirahat untuk gadget dan pikiran. Program ini menggabungkan eksplorasi alam mindful, pengenalan tanaman herbal, jamu making experience, social connection, journaling, dan refleksi diri.",
+        location: "Villa Botani",
+        duration: "One Day Trip",
+        capacity: "15 pax",
+        price: "Rp 700.000/pax",
+        highlights: [
+          "Digital Detox Ritual",
+          "Digital Rest Box Experience",
+          "Mindfulness Experience",
+          "Nature-Based Learning",
+          "Forest Exploration",
+          "Medicinal Plant Discovery",
+          "Jamu Making Experience",
+          "Slow Lunch Experience",
+          "Nature Connection Challenge",
+          "Tea & Reflection Session",
+          "Journaling and Self Reflection"
+        ],
+        outcomes: [
+          "Mini journal",
+          "Friendship card",
+          "Digital detox experience",
+          "Herbal drink / jamu creation",
+          "Reflection notes",
+          "Stronger social connection",
+          "Calmer and more mindful experience",
+          "New insight after a screen-free day"
+        ],
+        benefits: [
+          "Membantu peserta merasa lebih tenang",
+          "Membantu peserta merasa lebih rileks",
+          "Membantu peserta lebih hadir di momen saat ini",
+          "Memberikan pengalaman belajar mindfulness",
+          "Memberikan pengalaman membuat jamu",
+          "Menghadirkan pengalaman healing yang terstruktur",
+          "Mengurangi ketergantungan digital sementara",
+          "Membangun interaksi sosial nyata",
+          "Memperkuat koneksi dengan alam dan diri sendiri"
+        ],
+        mainActivities: [
+          {
+            title: "Detoks Digital",
+            description: "Peserta melakukan gadget drop ceremony dengan menyimpan gadget ke dalam Digital Rest Box. Setelah itu peserta menerima mini journal dan friendship card."
+          },
+          {
+            title: "Forest Exploration",
+            description: "Peserta diajak masuk ke area hutan atau kebun alami di Villa Botani bersama edukator botani untuk mengenal berbagai tanaman lokal, terutama tanaman herbal dan tanaman obat."
+          },
+          {
+            title: "Jamu Making Experience",
+            description: "Peserta belajar membuat jamu tradisional menggunakan bahan alami dari sesi pengenalan tanaman."
+          },
+          {
+            title: "Slow Lunch Experience",
+            description: "Peserta menikmati makan siang bersama dengan konsep no gadget, no rushing, mindful eating, dan makanan lokal."
+          },
+          {
+            title: "Nature Connection Challenge",
+            description: "Peserta dibagi ke kelompok kecil dan mengikuti mini challenge berbasis alam dan interaksi sosial, seperti mencari tanaman unik, menemukan aroma favorit, dan menulis apresiasi ke teman baru."
+          },
+          {
+            title: "Tea & Reflection Session",
+            description: "Peserta menikmati teh herbal sambil journaling dan melakukan refleksi diri."
+          }
+        ],
+        participantJourney: [
+          "Disconnect",
+          "Discover",
+          "Learn",
+          "Create",
+          "Connect",
+          "Reflect"
+        ],
+        itinerarySummary: [
+          { time: "07.00 - 08.00", activity: "Perjalanan dari Perpustakaan Bogor ke lokasi tujuan." },
+          { time: "08.00 - 08.30", activity: "Registrasi, welcome drink, dan digital detox ritual." },
+          { time: "08.30 - 10.00", activity: "Forest Exploration & Medicinal Plant Discovery." },
+          { time: "10.00 - 11.15", activity: "Traditional Herbal Drink Workshop / Membuat Jamu." },
+          { time: "11.15 - 12.15", activity: "Slow Lunch Experience." },
+          { time: "12.15 - 13.30", activity: "Nature Connection Challenge." },
+          { time: "13.30 - 14.30", activity: "Tea & Reflection Session." },
+          { time: "14.30 - 15.00", activity: "Closing Circle & Sharing Session." }
+        ],
+        include: [
+          "Entrance ticket Villa Botani",
+          "Rumah Balcony Nangka",
+          "Digital Detox Kit: mini journal and friendship card",
+          "Workshop Jamu Kit",
+          "Transportasi PP dari Perpustakaan Bogor ke lokasi",
+          "Lunch",
+          "Snack",
+          "Tea session",
+          "Mindfulness facilitator",
+          "Edukator botani",
+          "Dokumentasi kegiatan"
+        ],
+        exclude: [
+          "Pengeluaran pribadi",
+          "Obat-obatan pribadi",
+          "Tambahan makanan dan minuman di luar paket"
+        ],
+        uniqueSellingPoints: [
+          "Digital Detox yang Terstruktur",
+          "Tidak Bisa Dilakukan Sendiri",
+          "Personalized Healing Souvenir"
+        ],
+        sustainabilityImpact: [
+          "Penggunaan bahan alami pada workshop",
+          "Mengurangi ketergantungan digital",
+          "Membangun kepedulian terhadap alam",
+          "Membangun interaksi sosial nyata",
+          "Memperkuat koneksi antar peserta",
+          "Membuka peluang kolaborasi dengan local facilitator",
+          "Memperkenalkan konsep slow living",
+          "Mendukung konsumsi makanan lokal",
+          "Membangun budaya komunikasi langsung tanpa layar"
+        ],
+        seoMetadata: {
+          title: "OFFLINE DAY | Digital Detox & Mindful Nature Experience | Ekotifa",
+          description: "OFFLINE DAY is a one-day digital detox and mindful nature experience by Ekotifa, designed to help participants disconnect from screens and reconnect with nature, people, and self."
+        },
+        imageUrl: "/images/programs/offline-day.webp",
+        ctaLabel: "View Program Details",
         ctaHref: "https://wa.me/628123456789",
         isFeatured: false,
         isActive: true

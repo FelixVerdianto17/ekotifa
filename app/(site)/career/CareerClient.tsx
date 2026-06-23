@@ -5,12 +5,15 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight, MapPin, Play } from 'lucide-react';
 
 type JobOpening = {
-  id: string;
+  _id: string;
   title: string;
-  department: string;
-  location: string;
+  slug?: string;
   type: string;
-  google_form_url?: string;
+  location: string;
+  description?: string;
+  requirements?: string;
+  googleFormUrl?: string;
+  isActive?: boolean;
 };
 
 type CoreValue = {
@@ -138,37 +141,69 @@ export default function CareerClient({ initialJobOpenings = [] }: { initialJobOp
 
         {jobOpenings.length > 0 ? (
           <div className="flex flex-col gap-4">
-            {jobOpenings.map((job, idx) => (
-              <motion.a
-                href={job.google_form_url || '#'}
-                target={job.google_form_url ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                key={job.id}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.05 }}
-                className="group flex flex-col justify-between gap-6 rounded-3xl border border-zinc-200 bg-white p-6 transition-all hover:border-zinc-300 hover:shadow-xl md:flex-row md:items-center md:p-8 cursor-pointer"
-              >
-                <div className="flex flex-col gap-3">
-                  <h3 className="text-2xl font-semibold transition-colors group-hover:text-[#F4CA44]">
-                    {job.title}
-                  </h3>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="rounded-full bg-zinc-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-zinc-600">
-                      {job.department}
-                    </span>
-                    <span className="flex items-center gap-1 text-sm text-zinc-500">
-                      <MapPin className="h-4 w-4" /> {job.location}
-                    </span>
-                    <span className="text-sm text-zinc-500">•</span>
-                    <span className="text-sm text-zinc-500">{job.type}</span>
+            {jobOpenings.map((job, idx) => {
+              const hasForm = !!job.googleFormUrl;
+              const key = job._id || `job-${idx}`;
+
+              if (hasForm) {
+                return (
+                  <motion.a
+                    key={key}
+                    href={job.googleFormUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.05 }}
+                    className="group flex flex-col justify-between gap-6 rounded-3xl border border-zinc-200 bg-white p-6 transition-all hover:border-zinc-300 hover:shadow-xl md:flex-row md:items-center md:p-8 cursor-pointer"
+                  >
+                    <div className="flex flex-col gap-3">
+                      <h3 className="text-2xl font-semibold transition-colors group-hover:text-[#F4CA44]">
+                        {job.title}
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-3">
+                        <span className="rounded-full bg-zinc-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-zinc-600">
+                          {job.type}
+                        </span>
+                        <span className="flex items-center gap-1 text-sm text-zinc-500">
+                          <MapPin className="h-4 w-4" /> {job.location}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="hidden h-12 w-12 items-center justify-center rounded-full bg-zinc-50 transition-all group-hover:bg-[#F4CA44] group-hover:text-white md:flex">
+                      <ArrowUpRight className="h-5 w-5" />
+                    </div>
+                  </motion.a>
+                );
+              }
+
+              return (
+                <motion.div
+                  key={key}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.05 }}
+                  className="group flex flex-col justify-between gap-6 rounded-3xl border border-zinc-200 bg-white p-6 transition-all md:flex-row md:items-center md:p-8 opacity-60"
+                >
+                  <div className="flex flex-col gap-3">
+                    <h3 className="text-2xl font-semibold transition-colors text-zinc-500">
+                      {job.title}
+                    </h3>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="rounded-full bg-zinc-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-zinc-600">
+                        {job.type}
+                      </span>
+                      <span className="flex items-center gap-1 text-sm text-zinc-500">
+                        <MapPin className="h-4 w-4" /> {job.location}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className="hidden h-12 w-12 items-center justify-center rounded-full bg-zinc-50 transition-all group-hover:bg-[#F4CA44] group-hover:text-white md:flex">
-                  <ArrowUpRight className="h-5 w-5" />
-                </div>
-              </motion.a>
-            ))}
+                  <div className="hidden h-12 w-12 items-center justify-center rounded-full bg-zinc-100 text-zinc-300 transition-all md:flex">
+                    <span className="text-[10px] font-bold uppercase">N/A</span>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         ) : (
           <div className="rounded-3xl border border-zinc-100 bg-zinc-50 p-12 text-center text-zinc-500 text-lg">
