@@ -4,17 +4,24 @@ import Link from 'next/link';
 import { getActiveImpactJourneys } from '@/data/impactJourneys';
 import CommunityStoriesCarousel from '@/components/CommunityStoriesCarousel';
 import { cn } from '@/lib/utils';
-import { getCommunityStories } from '@/lib/supabase/queries';
+import { getCommunityStories } from '@/sanity/lib/queries';
+import { getActiveCommunityStories } from '@/data/communityStories';
 
 export const metadata: Metadata = {
   title: 'Community & Impact | Ekotifa',
   description: 'Community stories and impact journeys from Ekotifa’s sustainable tourism, learning expeditions, and community empowerment programs.',
+  alternates: {
+    canonical: 'https://ekotifa.id/stories-impact',
+  },
 };
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // ISR for sanity stories
 
 export default async function StoriesImpactPage() {
-  const communityStories = await getCommunityStories();
+  const sanityStories = await getCommunityStories();
+  const hardcodedStories = getActiveCommunityStories();
+  const communityStories = [...sanityStories, ...hardcodedStories];
+  
   const impactJourneys = getActiveImpactJourneys();
 
   return (

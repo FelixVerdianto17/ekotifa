@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ChevronRight, Compass, MapPin } from "lucide-react";
 import { getProgramBySlug, getAllProgramSlugs } from "@/data/programs";
+import Image from "next/image";
 import { ContactButton } from "@/components/ui/ContactButton";
 
 // Static Site Generation (SSG)
@@ -38,6 +39,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: description,
       type: "website",
       images: program.imageUrl ? [{ url: program.imageUrl, alt: program.title }] : undefined,
+    },
+    alternates: {
+      canonical: `https://ekotifa.id/programs/${slug}`,
     }
   };
 }
@@ -51,8 +55,24 @@ export default async function ProgramDetailPage({ params }: Props) {
     notFound();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": program.title,
+    "description": program.description.substring(0, 150),
+    "image": program.imageUrl ? [program.imageUrl] : [],
+    "author": {
+      "@type": "Organization",
+      "name": "Ekotifa"
+    }
+  };
+
   return (
     <main className="w-full bg-[#FDFDFD] pb-24 pt-32 md:pt-40">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="container mx-auto px-4 max-w-5xl">
         
         {/* Breadcrumb */}
@@ -66,10 +86,12 @@ export default async function ProgramDetailPage({ params }: Props) {
 
         {/* Hero Section */}
         <div className="relative mb-16 overflow-hidden rounded-[2.5rem] bg-zinc-100 aspect-[16/9] md:aspect-[21/9] flex items-end shadow-2xl">
-          <img 
+          <Image 
             src={program.imageUrl || '/images/programs/placeholder.jpg'} 
             alt={`${program.title} ${program.subtitle ? program.subtitle.toLowerCase() : 'experience'} by Ekotifa`} 
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            sizes="(max-width: 1400px) 100vw, 1400px"
+            className="absolute inset-0 object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent" />
           

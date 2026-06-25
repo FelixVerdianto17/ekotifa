@@ -8,7 +8,7 @@ export const metadata = {
   openGraph: {
     title: "Join Our Team | Ekotifa",
     description: "Explore career opportunities and join Ekotifa in creating meaningful journeys and sustainable impact.",
-    url: "https://ekotifa.com/career",
+    url: "https://ekotifa.id/career",
     siteName: "Ekotifa",
     images: [
       {
@@ -21,9 +21,12 @@ export const metadata = {
     locale: "en_US",
     type: "website",
   },
+  alternates: {
+    canonical: "https://ekotifa.id/career",
+  },
 };
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // ISR for career posts
 
 export default async function CareerPage() {
   const jobOpenings = await getCareerPosts();

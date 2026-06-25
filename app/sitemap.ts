@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getAllProgramSlugs } from '@/data/programs';
+import { getActiveImpactJourneys } from '@/data/impactJourneys';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://ekotifa.id';
@@ -28,5 +29,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticUrls, ...programUrls];
+  // Dynamic routes for stories-impact
+  const impactJourneys = getActiveImpactJourneys();
+  const storyUrls = impactJourneys.map((journey) => ({
+    url: `${baseUrl}/stories-impact/${journey.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
+
+  return [...staticUrls, ...programUrls, ...storyUrls];
 }

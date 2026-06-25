@@ -34,6 +34,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: journey.objective || journey.description,
       images: journey.imageUrl ? [journey.imageUrl] : [],
     },
+    alternates: {
+      canonical: `https://ekotifa.id/stories-impact/${slug}`,
+    }
   };
 }
 
@@ -45,8 +48,24 @@ export default async function ImpactJourneyDetail({ params }: Props) {
     notFound();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": journey.title,
+    "description": journey.objective || journey.description,
+    "image": journey.imageUrl ? [journey.imageUrl] : [],
+    "author": {
+      "@type": "Organization",
+      "name": "Ekotifa"
+    }
+  };
+
   return (
     <main className="min-h-screen bg-zinc-50 pt-24 pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Breadcrumb & Navigation */}
       <div className="max-w-5xl mx-auto px-6 mb-8">
         <nav className="flex text-sm text-zinc-500 font-medium" aria-label="Breadcrumb">

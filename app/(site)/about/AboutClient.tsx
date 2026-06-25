@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function AboutClient() {
   const missions = [
@@ -152,12 +153,14 @@ export default function AboutClient() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="h-[500px] sm:h-[600px] w-full overflow-hidden rounded-2xl bg-zinc-50 mt-20"
+          className="relative h-[500px] sm:h-[600px] w-full overflow-hidden rounded-2xl bg-zinc-50 mt-20"
         > 
-          <img 
+          <Image 
             src="/images/sections/About.webp" 
             alt="Kegiatan Konservasi Ekotifa" 
-            className="h-full w-full object-contain p-4 md:p-8 rounded-2xl grayscale hover:grayscale-0 transition-all duration-700"
+            fill
+            sizes="(max-width: 1400px) 100vw, 1400px"
+            className="object-contain p-4 md:p-8 rounded-2xl grayscale hover:grayscale-0 transition-all duration-700"
           />
         </motion.div>
       </section>

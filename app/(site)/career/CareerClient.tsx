@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, MapPin, Play } from 'lucide-react';
+import Image from 'next/image';
 
 type JobOpening = {
   _id: string;
@@ -80,10 +81,12 @@ export default function CareerClient({ initialJobOpenings = [] }: { initialJobOp
               ></iframe>
             ) : (
               <>
-                <img 
+                <Image 
                   src="https://img.youtube.com/vi/v4Q_7zIIBUw/maxresdefault.jpg" 
                   alt="Video Ekotifa pariwisata berkelanjutan" 
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                  fill
+                  sizes="(max-width: 1400px) 100vw, 1400px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#F4CA44] text-zinc-950 shadow-xl transition-transform duration-300 group-hover:scale-110">

@@ -13,7 +13,7 @@ export const metadata = {
   openGraph: {
     title: "Ekotifa - Ekowisata Kreatif & Wisata Edukasi Berkelanjutan",
     description: "Ekotifa (PT Ekowisata Kreatif Indonesia) menghadirkan program ekowisata kreatif berbasis edukasi lingkungan, konservasi alam, dan pemberdayaan masyarakat lokal.",
-    url: "https://ekotifa.com",
+    url: "https://ekotifa.id",
     siteName: "Ekotifa",
     images: [
       {
@@ -26,11 +26,38 @@ export const metadata = {
     locale: "id_ID",
     type: "website",
   },
+  alternates: {
+    canonical: "https://ekotifa.id",
+  },
 };
 
 export default function Home() {
+  const orgJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Ekotifa",
+    "url": "https://ekotifa.id",
+    "logo": "https://ekotifa.id/images/brand/logo.webp",
+    "sameAs": []
+  };
+
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Ekotifa",
+    "url": "https://ekotifa.id"
+  };
+
   return (
     <div className="flex w-full flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
       <Hero />
       <div id="about">
         <AboutSection />

@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "About Us - Ekotifa | Pelopor Ekowisata Kreatif",
     description: "Profil PT Ekowisata Kreatif Indonesia (Ekotifa). Pelajari visi kami dalam memadukan pariwisata berkelanjutan, riset ekologi, dan pemberdayaan masyarakat.",
-    url: "https://ekotifa.com/about",
+    url: "https://ekotifa.id/about",
     siteName: "Ekotifa",
     images: [
       {
@@ -19,6 +19,9 @@ export const metadata = {
     ],
     locale: "id_ID",
     type: "website",
+  },
+  alternates: {
+    canonical: "https://ekotifa.id/about",
   },
 };
 

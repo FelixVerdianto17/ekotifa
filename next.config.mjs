@@ -10,6 +10,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'bogor-kita.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
     ],
   },
 };
