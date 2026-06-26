@@ -49,10 +49,11 @@ export const metadata = {
     images: ["/images/og/ekotifa-og.jpg"],
   },
   icons: {
-    icon: '/images/brand/logo.webp',
-    shortcut: '/images/brand/logo.webp',
-    apple: '/images/brand/logo.webp',
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
+  manifest: '/manifest.webmanifest',
 };
 
 export default function RootLayout({
