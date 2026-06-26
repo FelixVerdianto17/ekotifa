@@ -1,5 +1,6 @@
 import CareerClient from './CareerClient';
 import { getCareerPosts } from '@/sanity/lib/queries';
+import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 
 export const metadata = {
   title: "Join Our Team | Ekotifa",
@@ -31,5 +32,15 @@ export const revalidate = 3600; // ISR for career posts
 export default async function CareerPage() {
   const jobOpenings = await getCareerPosts();
 
-  return <CareerClient initialJobOpenings={jobOpenings} />;
+  return (
+    <>
+      <BreadcrumbJsonLd 
+        items={[
+          { name: 'Home', item: 'https://ekotifa.id' },
+          { name: 'Career', item: 'https://ekotifa.id/career' }
+        ]} 
+      />
+      <CareerClient initialJobOpenings={jobOpenings} />
+    </>
+  );
 }

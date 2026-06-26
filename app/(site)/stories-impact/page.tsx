@@ -6,6 +6,7 @@ import CommunityStoriesCarousel from '@/components/CommunityStoriesCarousel';
 import { cn } from '@/lib/utils';
 import { getCommunityStories } from '@/sanity/lib/queries';
 import { getActiveCommunityStories } from '@/data/communityStories';
+import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 
 export const metadata: Metadata = {
   title: 'Community & Impact | Ekotifa',
@@ -26,6 +27,12 @@ export default async function StoriesImpactPage() {
 
   return (
     <main className="min-h-screen bg-zinc-50 pt-24 pb-20">
+      <BreadcrumbJsonLd 
+        items={[
+          { name: 'Home', item: 'https://ekotifa.id' },
+          { name: 'Community & Impact', item: 'https://ekotifa.id/stories-impact' }
+        ]} 
+      />
       {/* Header Section */}
       <section className="px-6 py-16 md:py-24 max-w-7xl mx-auto text-center">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tight">

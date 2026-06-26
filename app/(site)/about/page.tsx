@@ -1,4 +1,5 @@
 import AboutClient from './AboutClient';
+import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 
 export const metadata = {
   title: "About Us - Ekotifa | Pelopor Ekowisata Kreatif",
@@ -26,5 +27,15 @@ export const metadata = {
 };
 
 export default function AboutPage() {
-  return <AboutClient />;
+  return (
+    <>
+      <BreadcrumbJsonLd 
+        items={[
+          { name: 'Home', item: 'https://ekotifa.id' },
+          { name: 'About Us', item: 'https://ekotifa.id/about' }
+        ]} 
+      />
+      <AboutClient />
+    </>
+  );
 }

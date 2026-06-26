@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { programCategories } from "@/data/programs";
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 
 export const metadata: Metadata = {
   title: "Programs & Services | Ekotifa",
@@ -10,12 +11,21 @@ export const metadata: Metadata = {
     title: "Programs & Services | Ekotifa",
     description: "Explore Ekotifa’s meaningful journeys, learning expeditions, and purposeful vacations designed for sustainable impact.",
     type: "website",
+  },
+  alternates: {
+    canonical: "https://ekotifa.id/programs",
   }
 };
 
 export default function ProgramsListingPage() {
   return (
     <main className="w-full bg-[#FDFDFD] pb-24 pt-32 md:pt-40">
+      <BreadcrumbJsonLd 
+        items={[
+          { name: 'Home', item: 'https://ekotifa.id' },
+          { name: 'Programs & Services', item: 'https://ekotifa.id/programs' }
+        ]} 
+      />
       <div className="container mx-auto px-4 max-w-7xl">
         
         {/* Header Section */}

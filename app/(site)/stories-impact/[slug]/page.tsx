@@ -3,18 +3,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getImpactJourneyBySlug, getActiveImpactJourneys } from '@/data/impactJourneys';
+import ArticleJsonLd from '@/components/seo/ArticleJsonLd';
+import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 
 // Helper for type
-type Props = {
-  params: Promise<{ slug: string }>;
-};
-
 export function generateStaticParams() {
   const journeys = getActiveImpactJourneys();
   return journeys.map((journey) => ({
     slug: journey.slug,
   }));
 }
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -48,26 +50,23 @@ export default async function ImpactJourneyDetail({ params }: Props) {
     notFound();
   }
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": journey.title,
-    "description": journey.objective || journey.description,
-    "image": journey.imageUrl ? [journey.imageUrl] : [],
-    "author": {
-      "@type": "Organization",
-      "name": "Ekotifa"
-    }
-  };
-
   return (
     <main className="min-h-screen bg-zinc-50 pt-24 pb-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <ArticleJsonLd 
+        title={journey.title}
+        description={journey.objective || journey.description}
+        imageUrl={journey.imageUrl}
+      />
+      <BreadcrumbJsonLd 
+        items={[
+          { name: 'Home', item: 'https://ekotifa.id' },
+          { name: 'Community & Impact', item: 'https://ekotifa.id/stories-impact' },
+          { name: journey.title, item: `https://ekotifa.id/stories-impact/${slug}` }
+        ]} 
       />
       {/* Breadcrumb & Navigation */}
       <div className="max-w-5xl mx-auto px-6 mb-8">
+
         <nav className="flex text-sm text-zinc-500 font-medium" aria-label="Breadcrumb">
           <ol className="inline-flex items-center space-x-2">
             <li>

@@ -5,6 +5,8 @@ import { ArrowRight, ChevronRight, Compass, MapPin } from "lucide-react";
 import { getProgramBySlug, getAllProgramSlugs } from "@/data/programs";
 import Image from "next/image";
 import { ContactButton } from "@/components/ui/ContactButton";
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
+import ArticleJsonLd from "@/components/seo/ArticleJsonLd";
 
 // Static Site Generation (SSG)
 export function generateStaticParams() {
@@ -55,23 +57,19 @@ export default async function ProgramDetailPage({ params }: Props) {
     notFound();
   }
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": program.title,
-    "description": program.description.substring(0, 150),
-    "image": program.imageUrl ? [program.imageUrl] : [],
-    "author": {
-      "@type": "Organization",
-      "name": "Ekotifa"
-    }
-  };
-
   return (
     <main className="w-full bg-[#FDFDFD] pb-24 pt-32 md:pt-40">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <ArticleJsonLd 
+        title={program.title}
+        description={program.description.substring(0, 150)}
+        imageUrl={program.imageUrl}
+      />
+      <BreadcrumbJsonLd 
+        items={[
+          { name: 'Home', item: 'https://ekotifa.id' },
+          { name: 'Programs & Services', item: 'https://ekotifa.id/programs' },
+          { name: program.title, item: `https://ekotifa.id/programs/${slug}` }
+        ]} 
       />
       <div className="container mx-auto px-4 max-w-5xl">
         
@@ -79,10 +77,11 @@ export default async function ProgramDetailPage({ params }: Props) {
         <nav className="mb-8 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-zinc-400">
           <Link href="/" className="hover:text-yellow-600 transition-colors">Home</Link>
           <ChevronRight size={12} />
-          <Link href="/#program" className="hover:text-yellow-600 transition-colors">Programs</Link>
+          <Link href="/programs" className="hover:text-yellow-600 transition-colors">Programs</Link>
           <ChevronRight size={12} />
           <span className="text-zinc-900">{program.title}</span>
         </nav>
+
 
         {/* Hero Section */}
         <div className="relative mb-16 overflow-hidden rounded-[2.5rem] bg-zinc-100 aspect-[16/9] md:aspect-[21/9] flex items-end shadow-2xl">

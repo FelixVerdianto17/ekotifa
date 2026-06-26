@@ -5,6 +5,8 @@ import ProgramSection from '@/features/landing/components/ProgramSection';
 import TravelerQuiz from '@/features/landing/components/TravelerQuiz';
 import PartnerSection from '@/features/landing/components/PartnerSection';
 import MapWrapper from '@/components/MapWrapper';
+import OrganizationJsonLd from '@/components/seo/OrganizationJsonLd';
+import WebsiteJsonLd from '@/components/seo/WebsiteJsonLd';
 
 export const metadata = {
   title: "Ekotifa - Ekowisata Kreatif & Wisata Edukasi Berkelanjutan",
@@ -32,32 +34,10 @@ export const metadata = {
 };
 
 export default function Home() {
-  const orgJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Ekotifa",
-    "url": "https://ekotifa.id",
-    "logo": "https://ekotifa.id/images/brand/logo.webp",
-    "sameAs": []
-  };
-
-  const websiteJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Ekotifa",
-    "url": "https://ekotifa.id"
-  };
-
   return (
     <div className="flex w-full flex-col">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-      />
+      <OrganizationJsonLd />
+      <WebsiteJsonLd />
       <Hero />
       <div id="about">
         <AboutSection />
